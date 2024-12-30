@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    video {
+        width: 80%;
+        max-width: 600px;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+    }
+
+    .play-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: white;
+        background-color: #007BFF;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .play-button:hover {
+        background-color: #0056b3;
+    }
+</style> -->
+
+  <!-- <style>
+    .accordian{
+      margin: 60px auto;
+      width: 600px;
+    }
+
+    .accordian li{
+      list-style: none;
+      width: 100%;
+      padding: 10px;
+      margin: 20px;
+      border-radius: 8px;
+      background: #e3edf7;
+      box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+                  -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+    }
+
+    .accordian li label{
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    label::before{
+      content: '+';
+      margin-right: 10px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    input[type='radio']{
+      display: none;
+    }
+    .accordian .content{
+      padding: 0 10px;
+      line-height: 26px;
+      color: #555;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.5s, padding 0.5s;
+    }
+
+    .accordian  input[type='radio']:checked + label + .content{
+      max-height: 400px;
+      padding: 10px 10px 20px;
+    }
+     
+    .accordian  input[type='radio']:checked + label::before{
+      content: '-';
+      font-weight: 600;
+    }
+
+
+    
+   
+    @keyframes appers {
+      0%{ 
+        width: 10%;
+          }
+         25%{
+          width: 30%;
+         }
+         50%{
+                width: 50%;  
+         }
+         75%{
+                width: 75%;
+         }
+         100%{ 
+          width: 100%;
+          }
+    
+    }
+
+    .block{
+      z-index: 999 !important;
+      animation: appers linear ;
+      animation-timeline: view();
+      animation-range: entry 0% cover 50%;
+      background-color: rgb(255, 0, 0);
+      margin-bottom:10px; 
+      height:100vh;
+      width:100%;
+      z-index: 99;
+      position: relative;
+      padding: 0px 0px;
+      margin: 0px 0px;
+
+    }
+    .Different span{
+      position: relative;
+      writing-mode: vertical-rl;
+    }
+    .Different span::after{
+      content: "";
+      
+      bottom: 0;
+      right: 0;
+      left: 0;
+      position: absolute;
+      height: 1px;
+      width: 100%;
+    }
+   </style>  -->
+
+
+  <!-- <style>
+
+    @keyframes topdown{
+      0% {
+        top: 0px;
+
+      }
+      50%{
+        top: 20px;
+      }100%{
+        top: 0px;
+      }
+    }
+
+
+    .box{
+      height: 50px;
+      width: 50px;
+      background:linear-gradient(45deg, rgba(12, 82, 99,1), rgba(255, 255, 255, 0));
+      border-radius: 50%;
+      position: absolute;
+      animation-name: topdown;
+      animation-duration: 1.5s;
+      animation-delay: 0s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+      /* animation: topdown 1s 0s infinite linear; */
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      border: 1px solid #ffffff00;
+    }
+    .main{
+      display: flex;
+    }
+    .content{
+      height: 50px;
+      width: 10px;
+      background-color: black;
+      margin-left: 45px;
+      border-radius: 20px 20px 0px 0px;
+      margin-top: -2px;
+
+    }
+    .box img {
+      height: 20px;
+      width: 20px;
+    }
+
+  </style> -->
+
+
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000;
+}
+
+.carousel {
+  position: relative;
+  width: 80%;
+  overflow: hidden;
+}
+
+.carousel-container {
+  display: flex;
+  transition: transform 5s ease-in-out;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: 500px;
+}
+
+.carousel-slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 2rem;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+</style>
+
+
+
+
+</head>
+<body>
+  <!-- <div class="main">
+  <div class="box">
+    <img src="https://unistudio.co/html/lexend/assets/images/apps/zapier.svg" alt="" >
+  </div>
+  <div class="box"> <img src="https://unistudio.co/html/lexend/assets/images/apps/zapier.svg" alt="" ></div>
+</div> -->
+
+
+<!-- 
+<ul class="accordian">
+  <li>
+    <input type="radio" name="accordian" id="first" checked>
+    <label for="first">First</label>
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi suscipit magnam, officiis sit consequuntur et cumque, inventore illo modi dolores harum sunt consectetur nostrum dignissimos atque incidunt ad hic laudantium.</p>
+    </div>
+  </li>
+  <li>
+    <input type="radio" name="accordian" id="Second">
+    <label for="Second">Second</label>
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi suscipit magnam, officiis sit consequuntur et cumque, inventore illo modi dolores harum sunt consectetur nostrum dignissimos atque incidunt ad hic laudantium.</p>
+    </div>
+  </li>
+  <li>
+    <input type="radio" name="accordian" id="Third">
+    <label for="Third">Third</label>
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi suscipit magnam, officiis sit consequuntur et cumque, inventore illo modi dolores harum sunt consectetur nostrum dignissimos atque incidunt ad hic laudantium.</p>
+    </div>
+  </li>
+  <li>
+    <input type="radio" name="accordian" id="Fourth">
+    <label for="Fourth">Fourth</label>
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi suscipit magnam, officiis sit consequuntur et cumque, inventore illo modi dolores harum sunt consectetur nostrum dignissimos atque incidunt ad hic laudantium.</p>
+    </div>
+  </li>
+</ul>
+<div style="position: absolute; width: 100%; height: 100vh; margin: 0; padding: 0;">
+  <div style=" top: 0; left: 0; width: 100%; height: 100%;">
+    <video autoplay loop muted style="position: fixed; width: 100%; height: 100%; object-fit: cover;">
+      <source src="https://www.mlp.com/wp-content/uploads/2024/03/waves.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+
+
+<div class="block"></div>
+
+
+<div class="Different" style="width: 100%; height: 100vh;">
+  <span>Harman</span>
+</div> -->
+
+ <!-- <div class="container">
+        <video id="myVideo" controls>
+            <source src="https://www.mlp.com/wp-content/uploads/2024/10/millenium_brand_240930_subs_3-720p.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <br>
+        <button class="play-button" onclick="playVideo()">Play Video</button>
+    </div> -->
+
+
+
+    <!-- <script>
+        function playVideo() {
+            const video = document.getElementById('myVideo');
+            video.play();
+        }
+    </script> -->
+
+    <div class="carousel">
+      <div class="carousel-container">
+        <div class="carousel-slide">
+          <video src="https://www.w3schools.com/html/movie.mp4" autoplay loop muted></video>
+        </div>
+        <div class="carousel-slide">
+          <video src="https://www.w3schools.com/html/movie.mp4" autoplay loop muted></video>
+        </div>
+        <div class="carousel-slide">
+          <video src="https://www.w3schools.com/html/movie.mp4" autoplay loop muted></video>
+        </div>
+      </div>
+      <button class="prev" onclick="prevSlide()">&#60;</button>
+      <button class="next" onclick="nextSlide()">&#62;</button>
+    </div>
+
+
+
+
+
+
+<script>
+  let currentIndex = 0;
+
+const slides = document.querySelectorAll('.carousel-slide');
+const totalSlides = slides.length;
+
+function updateCarousel() {
+  const carouselContainer = document.querySelector('.carousel-container');
+  carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % totalSlides;
+  updateCarousel();
+}
+
+function prevSlide() {
+  currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+  updateCarousel();
+}
+
+</script>
+
+</body>
+</html>

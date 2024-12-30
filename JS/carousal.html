@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Carousel</title>
+  <style>
+    /* Styling for the container that holds the slides */
+    .slider-container {
+      position: relative;
+      width: 100%;
+      height: 100vh; /* Full height of the viewport */
+      overflow: hidden; /* Hide overflow to not show extra slides */
+      display: flex; /* Align slides horizontally */
+      transition: transform 0.5s ease-in-out; /* Smooth transition for sliding */
+    }
+
+    /* Each slide */
+    .slide {
+      width: 100%; /* Each slide takes up the full width of the container */
+      height: 100%; /* Full height of the container */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Styling for the video to cover the entire slide area */
+    .slide video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Styling for the content on top of the video */
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      z-index: 10;
+    }
+
+    /* Previous and next buttons */
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      font-size: 2rem;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      z-index: 20;
+    }
+
+    /* Positioning the buttons */
+    .prev {
+      left: 10px;
+    }
+
+    .next {
+      right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <!-- Slider container -->
+    <div class="slider-container">
+      <!-- Slide 1 -->
+      <div class="slide">
+        <div class="content">
+          <h1>Slide 1</h1>
+          <p>This is the first carousel made by me</p>
+        </div>
+        <video src="https://www.mlp.com/wp-content/uploads/2024/10/millenium_brand_240930_subs_3-720p.mp4" loop autoplay muted></video>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide">
+        <div class="content">
+          <h1>Slide 2</h1>
+          <p>This is the second carousel slide</p>
+        </div>
+        <video src="https://www.mlp.com/wp-content/uploads/2024/05/Nandita-5s-Preview_v3.mp4" loop autoplay muted></video>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide">
+        <div class="content">
+          <h1>Slide 3</h1>
+          <p>This is the third carousel slide</p>
+        </div>
+        <video src="https://www.mlp.com/wp-content/uploads/2024/03/waves.mp4" loop autoplay muted></video>
+      </div>
+    </div>
+
+    <!-- Previous and Next buttons -->
+    <button class="prev" onclick="prevSlide()">&#60;</button>
+    <button class="next" onclick="nextSlide()">&#62;</button>
+  </div>
+
+  <script>
+    // Starting index for the slides
+    let currentIndex = 0;
+    // Get all the slides
+    const slides = document.querySelectorAll('.slide');
+    // Get the total number of slides
+    const totalSlides = slides.length;
+
+    // Function to update the slider position
+    function update() {
+      const carouselContainer = document.querySelector('.slider-container');
+      // Shift the container left or right based on currentIndex
+      carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    // Function to go to the next slide
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % totalSlides;  // Loop to the first slide after the last one
+      update();
+    }
+
+    // Function to go to the previous slide
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;  // Loop to the last slide when going back from the first slide
+      update();
+    }
+  </script>
+</body>
+</html>
